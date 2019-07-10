@@ -416,3 +416,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.sdha_apps_bg_min=8
     drm.service.enabled=true \
     media.stagefright.thumbnail.prefer_hw_codecs=true
+
+# Boot
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.vendor.shutdown.waittime=500
