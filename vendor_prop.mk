@@ -6,6 +6,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
     audio.deep_buffer.media=true \
+    audio.dolby.ds2.enabled=true \
     audio.offload.disable=false \
     audio.offload.min.duration.secs=60 \
     audio.offload.video=false \
@@ -132,7 +133,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapsize=512m \
     dalvik.vm.heapstartsize=8m \
     dalvik.vm.heaptargetutilization=0.75 \
-    ro.dalvik.vm.native.bridge=0
+    ro.dalvik.vm.native.bridge=0 \
+    ro.sys.fw.dex2oat_thread_count=4 \
+    dalvik.vm.boot-dex2oat-threads=8 \
+    dalvik.vm.dex2oat-threads=4 \
+    dalvik.vm.image-dex2oat-threads=4 \
+    dalvik.vm.dex2oat-filter=speed \
+    dalvik.vm.image-dex2oat-filter=speed \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -162,6 +169,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable QC2 bufferqueue block-pool
 PRODUCT_PROPERTY_OVERRIDES += vendor.qc2.use.bqpool=1
 
+#DRM
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # Wifi-Display
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
@@ -173,6 +184,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Netflix
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.netflix.bsp_rev=Q660-13149-1
+
+#Enable B service adj transition by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.sys.fw.bservice_enable=true \
+    ro.vendor.qti.sys.fw.bservice_limit=5 \
+    ro.vendor.qti.sys.fw.bservice_age=5000
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -395,24 +412,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Volte
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.radio.force_on_dc=true \
-persist.radio.custom_ecc=1 \
-persist.radio.data_con_rprt=1 \
-persist.vendor.radio.data_ltd_sys_ind=1 \
-persist.radio.data_ltd_sys_ind=1 \
-persist.vendor.radio.ignore_dom_time=10 \
-persist.radio.ignore_dom_time=10 \
-persist.radio.rat_on=combine \
-persist.radio.is_wps_enabled=true \
-persist.radio.videopause.mode=1 \
-persist.radio.sap_silent_pin=1 \
-persist.radio.always_send_plmn=true \
-persist.rcs.supported=1 \
-persist.dbg.ims_volte_enable=1 \
-persist.dbg.volte_avail_ovr=1 \
-persist.dbg.vt_avail_ovr=1 \
-persist.dbg.wfc_avail_ovr=1 \
-persist.radio.data_lte_sys_ind=1
+    persist.vendor.radio.force_on_dc=true \
+    persist.radio.custom_ecc=1 \
+    persist.radio.data_con_rprt=1 \
+    persist.vendor.radio.data_ltd_sys_ind=1 \
+    persist.radio.data_ltd_sys_ind=1 \
+    persist.vendor.radio.ignore_dom_time=10 \
+    persist.radio.ignore_dom_time=10 \
+    persist.radio.rat_on=combine \
+    persist.radio.is_wps_enabled=true \
+    persist.radio.videopause.mode=1 \
+    persist.radio.sap_silent_pin=1 \
+    persist.radio.always_send_plmn=true \
+    persist.rcs.supported=1 \
+    persist.dbg.ims_volte_enable=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.radio.data_lte_sys_ind=1\
+    persist.vendor.radio.voice_on_lte=1 \
+    persist.radio.poweron_opt=1 \
+    persist.vendor.radio.calls.on.ims=1
 
 # Create Swap disk, if below sys-prop enabled & also if device has lower (< 1 GB) RAM
 PRODUCT_PROPERTY_OVERRIDES += \
