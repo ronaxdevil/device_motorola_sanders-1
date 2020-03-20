@@ -142,7 +142,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.demo.hdmirotationlock=false \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=480 \
-    persist.debug.wfd.enable=1 \
     sdm.debug.disable_skip_validate=1 \
     debug.gralloc.enable_fb_ubwc=1 \
     persist.camera.preview.ubwc=0 \
@@ -161,7 +160,9 @@ PRODUCT_PROPERTY_OVERRIDES += vendor.qc2.use.bqpool=1
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
-    vendor.video.disable.ubwc=1
+    vendor.video.disable.ubwc=1 \
+    persist.sys.wfd.nohdcp=1 \
+    vendor.gralloc.disable_wb_ubwc=1
 
 # Netflix
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -416,6 +417,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.sdha_apps_bg_min=8
     drm.service.enabled=true \
     media.stagefright.thumbnail.prefer_hw_codecs=true
+
+# SurfaceFlinger sensor props
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 
 # Boot
 PRODUCT_PROPERTY_OVERRIDES += \
