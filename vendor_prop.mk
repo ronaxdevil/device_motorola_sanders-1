@@ -140,6 +140,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.image-dex2oat-threads=4 \
     dalvik.vm.dex2oat-filter=speed \
     dalvik.vm.image-dex2oat-filter=speed \
+    dalvik.vm.stack-trace-dir=/data/anr
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -478,3 +479,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable touch heatmap
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.input.video_enabled=false
+
+# Misc
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.nfc_nci=pn54x \
+    persist.mot.gps.smart_battery=1
